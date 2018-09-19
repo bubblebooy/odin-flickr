@@ -1,0 +1,21 @@
+<h1> Flickr Photos </h1>
+
+<%  user_id = !params[:user].nil? ? params[:user][:user_id] : "159474702@N07"%>
+
+<% photos = flickr.people.getPhotos :user_id => user_id%>
+
+
+<%= form_for(:user, url: root_path, method: :get) do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id, value: user_id %>
+
+  <%= f.submit "Search"%>
+<% end %>
+
+
+
+  <% photos.each do |photo| %>
+
+      <img src="http://farm<%= photo.farm%>.staticflickr.com/<%= photo.server %>/<%= photo.id %>_<%= photo.secret %>.jpg">
+
+  <% end %>
