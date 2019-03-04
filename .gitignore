@@ -31,4 +31,4 @@
 /config/master.key
 
 # Ignore flickr keys
-#
+/config/local_env.yml
